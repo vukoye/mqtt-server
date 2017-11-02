@@ -1,6 +1,6 @@
 'use strict';
 var mosca = require('mosca')
-
+var winston = require('winston')
 var SECURE_KEY = __dirname + '/newkey.pem';
 var SECURE_CERT = __dirname + '/cert.pem';
 
