@@ -36,11 +36,6 @@ var listener = {
 var settings = {
   port: 1883,
   backend: listener,
-  secure : { 
-    port: 8443,
-    keyPath: SECURE_KEY,
-    certPath: SECURE_CERT,
-  }
 };
 
 
