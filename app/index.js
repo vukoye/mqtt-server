@@ -45,18 +45,18 @@ var server = new mosca.Server(settings);
 server.on('ready', setup);
 
 server.on('clientConnected', function(client) {
-    logger.info('Hello again distributed logs');
+    logger.info('client connected', client.id);
     console.log('client connected', client.id);
 });
 
 // fired when a message is received
 server.on('published', function(packet, client) {
-    logger.info('Hello again distributed logs');
+    logger.info('Published', packet.payload);
     console.log('Published', packet.payload);
 });
 
 // fired when the mqtt broker is ready
 function setup() {
-    logger.info('Hello again distributed logs');
+    logger.info('Mosca embedded MQTT broker running now');
     console.log('Mosca embedded MQTT broker running now')
 }
