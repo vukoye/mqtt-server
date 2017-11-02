@@ -1,4 +1,3 @@
-'use strict';
 var mosca = require('mosca')
 var winston = require('winston')
 var SECURE_KEY = __dirname + '/newkey.pem';
@@ -27,20 +26,19 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
-
+var listener = {
+  type: 'mongo',
+  url: 'mongodb://localhost:27017/mqtt',
+  pubsubCollection: 'listeners',
+  mongo: {}
+};
 
 var settings = {
-    port: 1883,
-    logger: {
-        name: "secureSample",
-        level: 40,
-    },
-    secure : {
-        port: 7998,
-        keyPath: SECURE_KEY,
-        certPath: SECURE_CERT,
-    }
+  port: 1883,
+  backend: listener
 };
+
+
 var server = new mosca.Server(settings);
 server.on('ready', setup);
 
